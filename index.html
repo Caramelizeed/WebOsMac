@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WebLinux OS</title>
+    <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+    <div id="desktop">
+        <div id="taskbar">
+            <button id="start-menu">Start</button>
+            <div id="applications">
+                <div class="app-icon" onclick="openFileExplorer()">📁</div>
+                <div class="app-icon" onclick="openBrowser()">🌐</div>
+                <div class="app-icon" onclick="openTerminal()">💻</div>
+            </div>
+            <div id="clock">10:25 AM</div>
+        </div>
+        
+        <div id="workspace">
+            <div id="desktop-icons">
+                <div class="desktop-icon" onclick="openFileExplorer()">
+                    <div class="desktop-icon-img">📁</div>
+                    <div class="desktop-icon-name">Files</div>
+                </div>
+                <div class="desktop-icon" onclick="openBrowser()">
+                    <div class="desktop-icon-img">🌐</div>
+                    <div class="desktop-icon-name">Browser</div>
+                </div>
+                <div class="desktop-icon" onclick="openTerminal()">
+                    <div class="desktop-icon-img">💻</div>
+                    <div class="desktop-icon-name">Terminal</div>
+                </div>
+            </div>
+            
+            <div id="file-explorer-container">
+                <div class="window-header">
+                    <div class="window-title">File Explorer</div>
+                    <div class="window-controls">
+                        <div class="window-control window-minimize" onclick="minimizeWindow('file-explorer-container')"></div>
+                        <div class="window-control window-maximize" onclick="maximizeWindow('file-explorer-container')"></div>
+                        <div class="window-control window-close" onclick="closeWindow('file-explorer-container')"></div>
+                    </div>
+                </div>
+                <div class="window-content" style="display: flex; height: calc(100% - 36px);">
+                    <div id="sidebar">
+                        <div class="sidebar-item">
+                            <span>🏠</span> Home
+                        </div>
+                        <div class="sidebar-item">
+                            <span>📄</span> Documents
+                        </div>
+                        <div class="sidebar-item">
+                            <span>🖼️</span> Pictures
+                        </div>
+                        <div class="sidebar-item">
+                            <span>🎵</span> Music
+                        </div>
+                        <div class="sidebar-item">
+                            <span>🎬</span> Videos
+                        </div>
+                        <div class="sidebar-item">
+                            <span>⬇️</span> Downloads
+                        </div>
+                    </div>
+                    <div id="files-view">
+                        <div id="path-bar">
+                            <span>Home</span>
+                            <input type="text" id="search-box" placeholder="Search files...">
+                        </div>
+                        <div id="files-list">
+                            <div class="file-item">
+                                <div class="file-icon">📄</div>
+                                <div class="file-name">document.txt</div>
+                            </div>
+                            <div class="file-item">
+                                <div class="file-icon">📄</div>
+                                <div class="file-name">notes.md</div>
+                            </div>
+                            <div class="file-item">
+                                <div class="file-icon">📁</div>
+                                <div class="file-name">Projects</div>
+                            </div>
+                            <div class="file-item">
+                                <div class="file-icon">📷</div>
+                                <div class="file-name">photo.jpg</div>
+                            </div>
+                            <div class="file-item">
+                                <div class="file-icon">🎵</div>
+                                <div class="file-name">song.mp3</div>
+                            </div>
+                            <div class="file-item">
+                                <div class="file-icon">📊</div>
+                                <div class="file-name">data.xlsx</div>
+                            </div>
+                            <div class="file-item">
+                                <div class="file-icon">🎬</div>
+                                <div class="file-name">video.mp4</div>
+                            </div>
+                            <div class="file-item">
+                                <div class="file-icon">💻</div>
+                                <div class="file-name">script.js</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div id="browser-container">
+                <div class="window-header">
+                    <div class="window-title">Web Browser</div>
+                    <div class="window-controls">
+                        <div class="window-control window-minimize" onclick="minimizeWindow('browser-container')"></div>
+                        <div class="window-control window-maximize" onclick="maximizeWindow('browser-container')"></div>
+                        <div class="window-control window-close" onclick="closeWindow('browser-container')"></div>
+                    </div>
+                </div>
+                <div class="window-content" style="padding: 0;">
+                    <div id="browser-content">
+                        <div id="browser-toolbar">
+                            <button class="browser-button">←</button>
+                            <button class="browser-button">→</button>
+                            <button class="browser-button">⟳</button>
+                            <input type="text" id="url-bar" value="https://google.com">
+                            <button class="browser-button">⋮</button>
+                        </div>
+                        <iframe id="browser-viewport" src="/api/placeholder/800/600" frameborder="0"></iframe>
+                    </div>
+                </div>
+            </div>
+            
+            <div id="terminal-container">
+                <div class="window-header">
+                    <div class="window-title">Terminal</div>
+                    <div class="window-controls">
+                        <div class="window-control window-minimize" onclick="minimizeWindow('terminal-container')"></div>
+                        <div class="window-control window-maximize" onclick="maximizeWindow('terminal-container')"></div>
+                        <div class="window-control window-close" onclick="closeWindow('terminal-container')"></div>
+                    </div>
+                </div>
+                <div class="window-content" style="padding: 0;">
+                    <div id="terminal-content">
+                        Welcome to WebLinux Terminal v1.0.0<br>
+                        user@weblinux:~$ ls<br>
+                        Documents  Downloads  Music  Pictures  Projects  Videos<br>
+                        user@weblinux:~$ echo "Hello World"<br>
+                        Hello World<br>
+                        <div id="terminal-input-line">
+                            <div id="terminal-prompt">user@weblinux:~$</div>
+                            <input id="terminal-input" type="text" autofocus>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="./script.js"></script>
+</body>
+</html>
